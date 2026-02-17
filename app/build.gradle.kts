@@ -34,11 +34,22 @@ android {
 }
 
 dependencies {
+
+    // Room dependencies using the Version Catalog
+    implementation(libs.room.runtime)
+    implementation(libs.room.common)
+
+    // For Java projects, use annotationProcessor
+    annotationProcessor(libs.room.compiler)
+    implementation(libs.androidx.core.splashscreen) // Ensure this is in your libs.versions.toml// OR directly:
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.bcrypt)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
