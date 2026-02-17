@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         // 3. If logged in, set the actual layout
         setContentView(R.layout.activity_main);
 
-        // Now you can setup your logout button
+        // logging out
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> logout());
     }
