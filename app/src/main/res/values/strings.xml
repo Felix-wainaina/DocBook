@@ -11,5 +11,7 @@
     <string name="no_account"><u>I don\'t have an account yet</u></string>
     <string name="proceed_login"><u>Proceed to Login</u></string>
     <string name="logout"><b>Logout</b></string>
+    <string name="apt">Book Appointment</string>
+    <string name="profile">Doctor Profile Image"</string>
 
 </resources>
