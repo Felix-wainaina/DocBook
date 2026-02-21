@@ -1,0 +1,84 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/white">
+
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/docbook_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_header"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#2C3E50"/>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:inputType="textCapWords"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:layout_marginTop="32dp"/>
+
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/grey"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etCpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/cpassword"
+        android:inputType="textPassword"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/grey"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_btn"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#3498DB"/>
+
+    <TextView
+        android:id="@+id/proceed_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/proceed_login"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/grey"/>
+
+</LinearLayout>

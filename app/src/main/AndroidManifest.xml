@@ -16,6 +16,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.App.Starting"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +28,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+
+        <activity android:name=".SignupActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

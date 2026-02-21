@@ -3,6 +3,20 @@
     <style name="Base.Theme.DocBook" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- The background color of the splash screen -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- The icon to display in the center -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/docbook_logo</item>
+        <!-- The theme to switch to after the splash is done -->
+        <item name="postSplashScreenTheme">@style/Theme.DocBook</item>
     </style>
 
     <style name="Theme.DocBook" parent="Base.Theme.DocBook" />
