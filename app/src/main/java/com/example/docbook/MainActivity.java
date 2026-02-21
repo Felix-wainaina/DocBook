@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,5 +64,12 @@ public class MainActivity extends AppCompatActivity {
         // logging out
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> logout());
+        //
+         // set up the data for display using the DoctorAdapter class.
+        //
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewDoctors);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DoctorAdapter adapter = new DoctorAdapter(doctors);
+        recyclerView.setAdapter(adapter);
     }
 }
