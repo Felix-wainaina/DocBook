@@ -1,8 +1,11 @@
 package com.example.docbook;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,6 +57,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
     public static class DoctorViewHolder extends RecyclerView.ViewHolder
     {
         TextView nameTextView, specialtyTextView, locationTextView;
+        Button bookAppointment;
         ImageView doctorImageView;
 
         public DoctorViewHolder(View itemView)
@@ -63,6 +67,21 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
             specialtyTextView = itemView.findViewById(R.id.txtSpecialty);
             locationTextView = itemView.findViewById(R.id.txtLocation);
             doctorImageView = itemView.findViewById(R.id.imgDoctorProfile);
+            bookAppointment = itemView.findViewById(R.id.btnBookAppointment);
+            bookAppointment.setOnClickListener(v ->
+            {
+                int position = getBindingAdapterPosition();
+                if (position != RecyclerView.NO_POSITION)
+                {
+                    Intent intent = new Intent (v.getContext(), BookingActivity.class);
+
+                    intent.putExtra("DOCTOR_NAME", nameTextView.getText());
+                    intent.putExtra("SPECIALTY", specialtyTextView.getText());
+                    intent.putExtra("HOSPITAL_LOCATION", locationTextView.getText());
+
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
