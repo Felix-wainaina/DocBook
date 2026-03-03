@@ -2,14 +2,15 @@ package com.example.docbook;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -31,17 +32,24 @@ public class BookingActivity extends AppCompatActivity {
         btnSelectTime = findViewById(R.id.btnSelectTime);
         btnConfirmBooking = findViewById(R.id.btnConfirmBooking);
 
-        // Apply Stitch's Sunrise Gradient to the header text
+        // Apply Sunrise Gradient to the header text
         applySunriseGradient(tvMainHeader);
 
-        // Date Selection Logic
+        // Date Selection Logic (UPDATED with Nelson's Formatter)
         btnSelectDate.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             new DatePickerDialog(this, (view, year, month, day) -> {
-                // UPDATE LOGIC: Switches "Not Selected" to chosen date
-                String selectedDate = day + "/" + (month + 1) + "/" + year;
-                tvSelectedDate.setText(selectedDate);
+
+                // 1. Get the raw date from the picker
+                String rawDate = day + "/" + (month + 1) + "/" + year;
+
+                // 2. Run it through Nelson's fixed formatter
+                String prettyDate = DateFormatter.formatBookingDate(rawDate);
+
+                // 3. Set the beautiful text to the UI
+                tvSelectedDate.setText(prettyDate);
                 tvSelectedDate.setTextColor(Color.parseColor("#1F2937"));
+
             }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
         });
 
@@ -49,7 +57,6 @@ public class BookingActivity extends AppCompatActivity {
         btnSelectTime.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             new TimePickerDialog(this, (view, hour, minute) -> {
-                // UPDATE LOGIC: Switches "Not Selected" to chosen time
                 String selectedTime = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
                 tvSelectedTime.setText(selectedTime);
                 tvSelectedTime.setTextColor(Color.parseColor("#1F2937"));
@@ -60,10 +67,22 @@ public class BookingActivity extends AppCompatActivity {
         btnConfirmBooking.setOnClickListener(v -> {
             if (tvSelectedDate.getText().toString().equals("Not Selected") ||
                     tvSelectedTime.getText().toString().equals("Not Selected")) {
-                Toast.makeText(this, "Please select date and time first!", Toast.LENGTH_SHORT).show();
+
+                Snackbar.make(findViewById(android.R.id.content), "Please select date and time first!", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(Color.parseColor("#D32F2F"))
+                        .show();
             } else {
-                Toast.makeText(this, "Booking Confirmed!", Toast.LENGTH_LONG).show();
-                // Add code here to navigate to your DashboardActivity
+                Snackbar.make(findViewById(android.R.id.content), "Booking Confirmed!", Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(Color.parseColor("#4CAF50"))
+                        .show();
+
+                Intent intent = new Intent(BookingActivity.this, DashboardActivity.class);
+                // Because we set the pretty text to the TextView earlier, it will pass the pretty date automatically!
+                intent.putExtra("EXTRA_DATE", tvSelectedDate.getText().toString());
+                intent.putExtra("EXTRA_TIME", tvSelectedTime.getText().toString());
+                intent.putExtra("EXTRA_DOCTOR", "Alex Chen");
+
+                startActivity(intent);
             }
         });
     }

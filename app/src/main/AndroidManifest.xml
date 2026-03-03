@@ -11,9 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DocBook">
+
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+
         <activity
             android:name=".BookingActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.App.Starting"
@@ -28,7 +34,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
 
         <activity android:name=".SignupActivity"
             android:exported="true">

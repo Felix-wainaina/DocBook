@@ -18,11 +18,10 @@ public class DashboardActivity extends AppCompatActivity {
         tvDate = findViewById(R.id.tvAppointmentDate);
         tvTime = findViewById(R.id.tvAppointmentTime);
 
-        // 2. Extract data from Intent
-        // NOTE: Replace these placeholder strings with keys from Felix/Nelson
-        String doctorName = getIntent().getStringExtra("DOCTOR_NAME_KEY");
-        String date = getIntent().getStringExtra("DATE_KEY");
-        String time = getIntent().getStringExtra("TIME_KEY");
+        // 2. Extract data from Intent using exact keys from BookingActivity
+        String doctorName = getIntent().getStringExtra("EXTRA_DOCTOR");
+        String date = getIntent().getStringExtra("EXTRA_DATE");
+        String time = getIntent().getStringExtra("EXTRA_TIME");
 
         // 3. Bind data to UI
         if (doctorName != null) tvDoctorName.setText("Dr. " + doctorName);
